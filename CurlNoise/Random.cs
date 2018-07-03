@@ -82,7 +82,7 @@ namespace CurlNoiseExtension
                 return ((h & 1) != 0 ? -u : u) + ((h & 2) != 0 ? -v : v) + ((h & 4) != 0 ? -w : w);
             }
 
-            internal static float Simplex_Noise1(float x)
+            public static float Simplex_Noise1(float x)
             {
                 var i0 = FastFloor(x);
                 var i1 = i0 + 1;
