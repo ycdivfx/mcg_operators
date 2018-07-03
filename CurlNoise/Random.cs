@@ -1,12 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
+using ViperEngine;
 
-namespace CurlNoiseExtension
+namespace NoiseExtension
 {
+    [Category("Random")]
     public static class Random
     {
+        [Category("Curl Noise")]
         public static class CurlNoise
         {
-            private static byte[] _perm;
+            private static readonly byte[] Perm;
 
             private static readonly byte[] PermOriginal =
             {
@@ -37,6 +40,12 @@ namespace CurlNoiseExtension
                 49, 192, 214, 31, 181, 199, 106, 157, 184, 84, 204, 176, 115, 121, 50, 45, 127, 4, 150, 254,
                 138, 236, 205, 93, 222, 114, 67, 29, 24, 72, 243, 141, 128, 195, 78, 66, 215, 61, 156, 180
             };
+
+            static CurlNoise()
+            {
+                Perm = new byte[PermOriginal.Length];
+                PermOriginal.CopyTo(Perm, 0);
+            }
 
             private static int FastFloor(float x)
             {
@@ -82,6 +91,8 @@ namespace CurlNoiseExtension
                 return ((h & 1) != 0 ? -u : u) + ((h & 2) != 0 ? -v : v) + ((h & 4) != 0 ? -w : w);
             }
 
+            [Description(
+                "Generates a 1 dimension Simplex Noise aka Curl Noise. Multiply the input to change scale or add to generate an offset effect.")]
             public static float Simplex_Noise1(float x)
             {
                 var i0 = FastFloor(x);
@@ -93,16 +104,18 @@ namespace CurlNoiseExtension
 
                 var t0 = 1.0f - x0 * x0;
                 t0 *= t0;
-                n0 = t0 * t0 * Grad(_perm[i0 & 0xff], x0);
+                n0 = t0 * t0 * Grad(Perm[i0 & 0xff], x0);
 
                 var t1 = 1.0f - x1 * x1;
                 t1 *= t1;
-                n1 = t1 * t1 * Grad(_perm[i1 & 0xff], x1);
+                n1 = t1 * t1 * Grad(Perm[i1 & 0xff], x1);
                 // The maximum value of this noise is 8*(3/4)^4 = 2.53125
                 // A factor of 0.395 scales to fit exactly within [-1,1]
                 return 0.395f * (n0 + n1);
             }
 
+            [Description(
+                "Generates a 2 dimensions Simplex Noise aka Curl Noise. Multiply the input to change scale or add to generate an offset effect.")]
             public static float Simplex_Noise2(Vector2 v)
             {
                 var x = v.X;
@@ -161,7 +174,7 @@ namespace CurlNoiseExtension
                 else
                 {
                     t0 *= t0;
-                    n0 = t0 * t0 * Grad(_perm[ii + _perm[jj]], x0, y0);
+                    n0 = t0 * t0 * Grad(Perm[ii + Perm[jj]], x0, y0);
                 }
 
                 var t1 = 0.5f - x1 * x1 - y1 * y1;
@@ -172,7 +185,7 @@ namespace CurlNoiseExtension
                 else
                 {
                     t1 *= t1;
-                    n1 = t1 * t1 * Grad(_perm[ii + i1 + _perm[jj + j1]], x1, y1);
+                    n1 = t1 * t1 * Grad(Perm[ii + i1 + Perm[jj + j1]], x1, y1);
                 }
 
                 var t2 = 0.5f - x2 * x2 - y2 * y2;
@@ -183,7 +196,7 @@ namespace CurlNoiseExtension
                 else
                 {
                     t2 *= t2;
-                    n2 = t2 * t2 * Grad(_perm[ii + 1 + _perm[jj + 1]], x2, y2);
+                    n2 = t2 * t2 * Grad(Perm[ii + 1 + Perm[jj + 1]], x2, y2);
                 }
 
                 // Add contributions from each corner to get the final noise value.
@@ -191,6 +204,8 @@ namespace CurlNoiseExtension
                 return 40.0f * (n0 + n1 + n2); // TODO: The scale factor is preliminary!
             }
 
+            [Description(
+                "Generates a 3 dimensions Simplex Noise aka Curl Noise. Multiply the input to change scale or add to generate an offset effect.")]
             public static float Simplex_Noise3(Vector3 v)
             {
                 var x = v.X;
@@ -315,7 +330,7 @@ namespace CurlNoiseExtension
                 else
                 {
                     t0 *= t0;
-                    n0 = t0 * t0 * Grad(_perm[ii + _perm[jj + _perm[kk]]], x0, y0, z0);
+                    n0 = t0 * t0 * Grad(Perm[ii + Perm[jj + Perm[kk]]], x0, y0, z0);
                 }
 
                 var t1 = 0.6f - x1 * x1 - y1 * y1 - z1 * z1;
@@ -326,7 +341,7 @@ namespace CurlNoiseExtension
                 else
                 {
                     t1 *= t1;
-                    n1 = t1 * t1 * Grad(_perm[ii + i1 + _perm[jj + j1 + _perm[kk + k1]]], x1, y1, z1);
+                    n1 = t1 * t1 * Grad(Perm[ii + i1 + Perm[jj + j1 + Perm[kk + k1]]], x1, y1, z1);
                 }
 
                 var t2 = 0.6f - x2 * x2 - y2 * y2 - z2 * z2;
@@ -337,7 +352,7 @@ namespace CurlNoiseExtension
                 else
                 {
                     t2 *= t2;
-                    n2 = t2 * t2 * Grad(_perm[ii + i2 + _perm[jj + j2 + _perm[kk + k2]]], x2, y2, z2);
+                    n2 = t2 * t2 * Grad(Perm[ii + i2 + Perm[jj + j2 + Perm[kk + k2]]], x2, y2, z2);
                 }
 
                 var t3 = 0.6f - x3 * x3 - y3 * y3 - z3 * z3;
@@ -348,7 +363,7 @@ namespace CurlNoiseExtension
                 else
                 {
                     t3 *= t3;
-                    n3 = t3 * t3 * Grad(_perm[ii + 1 + _perm[jj + 1 + _perm[kk + 1]]], x3, y3, z3);
+                    n3 = t3 * t3 * Grad(Perm[ii + 1 + Perm[jj + 1 + Perm[kk + 1]]], x3, y3, z3);
                 }
 
                 // Add contributions from each corner to get the final noise value.

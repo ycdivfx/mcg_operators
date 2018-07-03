@@ -1,13 +1,12 @@
-﻿using System;
-using ViperEngine;
+﻿using ViperEngine;
 
-namespace CurlNoiseExtension
+namespace NoiseExtension
 {
     public class Extension : IViperExtension
     {
         public void RegisterOps()
         {
-            ViperOp.RegisterStaticMethods(typeof(Random.CurlNoise));
+            ViperOpExtensions.RegisterWithDescription(typeof(Random));
         }
     }
 }
