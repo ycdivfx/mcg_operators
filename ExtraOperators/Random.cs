@@ -372,7 +372,7 @@ namespace NoiseExtension
             }
 
             [Description("Generates a 3 dimensions Simplex Noise aka Curl Noise. Returns position plus 'normal' multiplied by noise.")]
-            public static Vector3 Simplex_Noise3V3(Vector3 p, Vector3 n)
+            public static Vector3 Simplex_Noise3_To_Vector3(Vector3 p, Vector3 n)
             {
                 var result = Simplex_Noise3(p);
                 return p + (n * result);
