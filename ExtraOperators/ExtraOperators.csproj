@@ -25,7 +25,8 @@
   <ItemGroup>
     <Reference Include="Geometry3D">
       <HintPath>C:\Program Files\Autodesk\3ds Max 2018\Geometry3D.dll</HintPath>
-      <EmbedInteropTypes>false</EmbedInteropTypes>
+      <EmbedInteropTypes></EmbedInteropTypes>
+      <Private>false</Private>
     </Reference>
     <Reference Include="ImmutableArray">
       <HintPath>C:\Program Files\Autodesk\3ds Max 2018\ImmutableArray.dll</HintPath>
