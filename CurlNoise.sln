@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimplexNoise", "CurlNoise\SimplexNoise.csproj", "{0C6B60BB-B5D0-46A5-8986-3A5F672CEB9A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C6B60BB-B5D0-46A5-8986-3A5F672CEB9A}.Debug|x64.ActiveCfg = Debug|x64
+		{0C6B60BB-B5D0-46A5-8986-3A5F672CEB9A}.Debug|x64.Build.0 = Debug|x64
+		{0C6B60BB-B5D0-46A5-8986-3A5F672CEB9A}.Release|x64.ActiveCfg = Release|x64
+		{0C6B60BB-B5D0-46A5-8986-3A5F672CEB9A}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {370E49CF-C9C8-4ADD-A2F2-10A1F8AA0C43}
+	EndGlobalSection
+EndGlobal
