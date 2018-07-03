@@ -370,6 +370,13 @@ namespace NoiseExtension
                 // The result is scaled to stay just inside [-1,1]
                 return 32.0f * (n0 + n1 + n2 + n3); // TODO: The scale factor is preliminary!
             }
+
+            [Description("Generates a 3 dimensions Simplex Noise aka Curl Noise. Returns position plus 'normal' multiplied by noise.")]
+            public static Vector3 Simplex_Noise3V3(Vector3 p, Vector3 n)
+            {
+                var result = Simplex_Noise3(p);
+                return p + (n * result);
+            }
         }
     }
 }
