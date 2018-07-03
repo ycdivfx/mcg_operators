@@ -1,12 +1,14 @@
-﻿using ViperEngine;
+﻿using NoiseExtension;
+using ViperEngine;
 
-namespace NoiseExtension
+namespace MCG.ExtraOperators
 {
     public class Extension : IViperExtension
     {
         public void RegisterOps()
         {
-            ViperOpExtensions.RegisterWithDescription(typeof(Random));
+            ViperOpExtensions.RegisterWithDescription(typeof(RandomOps));
+            ViperOpExtensions.RegisterWithDescription(typeof(MeshOps));
         }
     }
 }

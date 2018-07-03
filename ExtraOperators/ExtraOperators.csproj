@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Platforms>AnyCPU;x64</Platforms>
-    <RootNamespace>NoiseExtension</RootNamespace>
+    <RootNamespace>MCG.ExtraOperators</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,6 +23,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="Geometry3D">
+      <HintPath>C:\Program Files\Autodesk\3ds Max 2018\Geometry3D.dll</HintPath>
+      <EmbedInteropTypes>false</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ImmutableArray">
+      <HintPath>C:\Program Files\Autodesk\3ds Max 2018\ImmutableArray.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
     <Reference Include="MonoGame.Framework">
       <HintPath>C:\Program Files\Autodesk\3ds Max 2018\MonoGame.Framework.dll</HintPath>
       <Private>false</Private>

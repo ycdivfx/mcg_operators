@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using ViperEngine;
 
-namespace NoiseExtension
+namespace MCG.ExtraOperators
 {
-    [Category("Random")]
-    public static class Random
+    [Category("Extra.Random")]
+    public static class RandomOps
     {
         [Category("Curl Noise")]
         public static class CurlNoise
@@ -116,10 +116,10 @@ namespace NoiseExtension
 
             [Description(
                 "Generates a 2 dimensions Simplex Noise aka Curl Noise. Multiply the input to change scale or add to generate an offset effect.")]
-            public static float Simplex_Noise2(Vector2 v)
+            public static float Simplex_Noise2(Vector2 p)
             {
-                var x = v.X;
-                var y = v.Y;
+                var x = p.X;
+                var y = p.Y;
                 const float F2 = 0.366025403f; // F2 = 0.5*(sqrt(3.0)-1.0)
                 const float G2 = 0.211324865f; // G2 = (3.0-Math.sqrt(3.0))/6.0
 
@@ -206,11 +206,11 @@ namespace NoiseExtension
 
             [Description(
                 "Generates a 3 dimensions Simplex Noise aka Curl Noise. Multiply the input to change scale or add to generate an offset effect.")]
-            public static float Simplex_Noise3(Vector3 v)
+            public static float Simplex_Noise3(Vector3 p)
             {
-                var x = v.X;
-                var y = v.Y;
-                var z = v.Z;
+                var x = p.X;
+                var y = p.Y;
+                var z = p.Z;
                 const float F3 = 0.333333333f;
                 const float G3 = 0.166666667f;
 
