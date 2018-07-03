@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimplexNoise", "CurlNoise\SimplexNoise.csproj", "{0C6B60BB-B5D0-46A5-8986-3A5F672CEB9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtraOperators", "ExtraOperators\ExtraOperators.csproj", "{0C6B60BB-B5D0-46A5-8986-3A5F672CEB9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
