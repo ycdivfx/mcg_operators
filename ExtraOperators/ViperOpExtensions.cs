@@ -1,9 +1,10 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using NoiseExtension;
 using ViperEngine;
 
-namespace NoiseExtension
+namespace MCG.ExtraOperators
 {
     internal static class ViperOpExtensions
     {
@@ -15,6 +16,9 @@ namespace NoiseExtension
         /// <param name="category">Base category. Normally left as null.</param>
         public static void RegisterWithDescription(Type opType, string category=null)
         {
+#if MAX2017
+            ViperOp.RegisterStaticMethods(opType);
+#else
             var categoryAttr = opType.GetCustomAttributes(typeof(CategoryAttribute), true);
             var tmpCategory = ((CategoryAttribute)categoryAttr.FirstOrDefault())?.Text ?? string.Empty;
             if (string.IsNullOrWhiteSpace(category)) category = tmpCategory;
@@ -47,6 +51,7 @@ namespace NoiseExtension
                     viperMethodOp.Description = description;
 
                 ViperContext.OpContext.RegisterOp(viperMethodOp);
+
             }
 
             var nestedTypes = opType.GetNestedTypes();
@@ -54,6 +59,7 @@ namespace NoiseExtension
             {
                 RegisterWithDescription(type, category);
             }
+#endif
         }
     }
 }
